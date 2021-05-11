@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay</title>
+    <script>
+        function calc(){
+                var a,b,c;
+                a=Number(document.getElementById("money").value);
+                b=Number(document.getElementById("coins").value);
+                if(a==""){
+                    alert("Enter money");
+                    return false
+                }
+                if(b==""){
+                    alert("Enter coins")
+                    return false
+                }
+                c= a + b*0.6;
+                document.getElementById("answer").value= c;
+            }
+    </script>
+    
+</head>
+<body>
+    Money:
+    <input type="number" name="money" placeholder="Enter money" id="money"><br><br>
+    Coins:
+    <input type="number" name="coins" placeholder="Enter no of coins" id="coins"><br><br>
+    <input type="button" value="calculate" onclick="calc()"><br><br>
+    <input type="text" id="answer" placeholder="Click calculate before">
+    <input type="button" name="pay" value="pay">
+    
+</body>
+
+</html>

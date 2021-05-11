@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+            <meta http-equiv="x-ua-compatible" content="ie=sdge">
+            <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'css\styles.css' %}">
+            <title>Paisa</title>
+        </head>
+        <body>
+            <header class="jumbotron">
+                <div class="container">
+                    <div class="row row-header">
+                        <div class="col-12 col-xg-8 col-sm-8 align-self-center">
+                            <h1 class="align-self-center">Paisa</h1>
+                        </div>
+                        <div class="col-12 col-xg-4 col-sm-4">
+                            <a role="button" class="btn btn-primary" href="createaccount"><h5>Create account</h5></a>
+                            <a role="button" class="btn btn-primary" href="login"><h5>Sign in</h5></a></button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        <div class="row row-content">
+            <div class="col-12">
+                <h1 class="text-center" style="color:rgb(94, 0, 89);">Create account</h1><br>
+            </div>
+            <div class="col-12">
+                <form action="createaccount" method="post">
+                    {% csrf_token %}
+                    <div class="form-group row row-content">
+                        <label for="username" class="offset-1 col-md-2 col-sm-2 col-form-label">Username</label>
+                        <div class="col-md-7 col-sm-7">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Display name" required><br>
+                        </div>
+                        <label for="fullname" class="offset-1 col-md-2 col-sm-2 col-form-label">Name</label>
+                        <div class="col-md-3 offset-xs-1 col-sm-3">
+                            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required><br>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <input type="text" class="form-control" id="fullname" name="last_name" placeholder="Last Name" required><br>
+                        </div>
+                        <!--<label for="gender" class="offset-1 col-md-2 col-sm-2 col-form-label">Gender</label>
+                        <div class="col-md-7 col-sm-7 form-check">
+                            <input type="radio" id="gendercheck1" name="gender" >
+                            <label for="gendercheck1">Male</label>&nbsp&nbsp
+                            <input type="radio" id="gendercheck2" name="gender" >
+                            <label for="gendercheck2">Female</label>&nbsp&nbsp
+                            <input type="radio" id="gendercheck3" name="gender" >
+                            <label for="gendercheck3">Other</label><br>
+                        </div>-->
+                        <label for="email" class="offset-1 col-md-2 col-sm-2 col-form-label">Email</label>
+                        <div class="col-md-7 col-sm-7">
+                            <input type="text" class="form-control" id="email" name="email1" placeholder="Required" required><br>
+                        </div>
+                        <label for="optemail" class="offset-1 col-md-2 col-sm-2 col-form-label"></label>
+                        <div class="col-md-7 col-sm-7">
+                            <input type="text" class="form-control" id="optemail" name="email2" placeholder="Optional" ><br>
+                        </div><br>
+                        <!--<label for="number" class="offset-1 col-md-2 col-sm-2 col-form-label">Number</label>
+                        <div class="col-md-1 col-sm-1">
+                            <input type="text" class="form-control" id="countrycode" name="countrycode" placeholder="Country code"><br>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <input type="tel" class="form-control" id="number" name="number" placeholder="First number(Required)"><br>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <input type="text" class="form-control" id="number" name="number2" placeholder="Second number(Optional)"><br>
+                        </div>-->
+                        
+                        <label for="password" class="offset-1 col-md-2 col-sm-2 col-form-label">Password</label>
+                        <div class="col-md-4 col-sm-4">
+                            <input type="password" class="form-control" id="password" name="password1" placeholder="Enter password" required><br>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <input type="password" class="form-control" id="password" name="password2" placeholder="Re-enter password" required><br>
+                        </div>
+                        <!--<label for="address" class="offset-1 col-md-2 col-sm-2 col-form-label">Address</label>
+                        <div class="col-md-7 col-sm-7">
+                            <textarea class="form-control" id="address" name="address"></textarea><br>
+                        </div>
+
+                        <label for="country" class="offset-1 col-md-2 col-sm-2 col-form-label">Country</label>
+                        <div class="col-md-3 col-sm-3">
+                            <select class="form-control" id="country" name="country" placeholder="Select your Country">
+                                <option>Select your country</option>
+                                <option>India</option>
+                                <option>Canada</option>
+                                <option>other</option>
+                            </select>
+                        </div>
+                        <label for="country" class="col-md-1 col-sm-1 col-form-label">Language</label>
+                        <div class="col-md-3 col-sm-3">
+                            <select class="form-control" id="country" name="language" placeholder="select language">
+                                <option>Select your Language</option>
+                                <option>Telugu</option>
+                                <option>Hindi</option>
+                                <option>English</option>
+                            </select>
+                            <br>
+                        </div>
+                        
+                        <label for="type" class="offset-1 col-md-2 col-sm-2 col-form-label">type</label>
+                        <div class="col-md-7 col-sm-7">
+                            <select type="password" class="form-control" id="type" name="type" >
+                                <option>Select your type</option>
+                                <option>Advertiser</option>
+                                <option>Viewer</option>
+                                <option>Both</option>
+                            </select><br>
+                        </div>
+
+                        <label for="interested-in" class="offset-1 col-md-2 col-sm-2 col-form-label">Interested in</label>
+                        <div class="form-check col-md-7 col-sm-7">
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Games</label>
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Entertainment</label>
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Technology</label>
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Sports</label>
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Fasion & beauty</label>
+                            <input type="checkbox" id="check1">
+                            <label for="check1">Blogs/website</label>
+                        </div>
+                        <div class="col-12 col-sm-12  offset-1">
+                            <input type="checkbox" id="checkfinal">
+                            <label for="checkfinal">Agreeing term and condition of Pasia</label>
+                        </div>-->
+                        <div class="col-12 text-center">
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </div>
+                    </div>
+                </form>  
+
+                <div class="text-center">
+                    {% for message in messages%}
+                    <h2>{{message}}</h2>
+                    {% endfor %}
+                </div>
+                <br><br><br>
+                <footer class="footer ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 col-sm-4 col-bg-4">
+                                <th><h3>Pages</h3></th>
+                                <dd><a href="#">Terms and Conditions</a></dd>
+                                <dd><a href="#">Privacy Policy</a></dd>
+                                <dd><a href="#">About Us</a></dd>
+                                <dd><a href="#">Contact Us</a></dd>
+                            </div>
+                            <div class="col-12 col-sm-4 col-bg-4">
+                                <th><h3>Developers</h3></th>
+                                
+                                <dd>Sai kiran</dd>
+                            </div>
+                            <div class="col-12 col-sm-3 col-bg-3 offset-1">
+                                <th><h3>Social Media</h3></th>
+                                <dd><a href="https://twitter.com/BloggerBobbili" target="_blank">Twitter</a></dd>
+                                <dd><a href="https://www.facebook.com/bobbili.saikiran.94" target="_blank">Facebook</a></dd>
+                                <dd><a href="https://in.pinterest.com/bobbilisaikiran/" target="_blank">Pinterest</a></dd>
+                                <dd><a href="https://www.youtube.com/channel/UC1sjo5urqghLPvZ0l4c5vnQ/" target="_blank">Youtube</a></dd>
+                                <dd><a href="https://www.instagram.com/blo.ggerblogs/" target="_blank">Instagram</a></dd>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                
+            </body>
+        </html>

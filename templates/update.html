@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=sdge">
+        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css\styles.css' %}">
+        <link rel="stylesheet" href="{% static 'node_modules\font-awesome\font-awesome\css/font-awesome.min.css' %}">
+        <title>Update</title>
+    </head>
+    <body>
+        
+    <br><br><br><br>
+        <nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="index" style="text-decoration: none;"><h1 id="navpaisa">Paisa</h1></a>
+                
+                <div class="collapse navbar-collapse" id="Navbar">
+                    <ul class="navbar-nav ml-auto">&nbsp&nbsp
+                        <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#paisadropdown" data-toggle="dropdown" >Paisa</a>
+                                <div class="dropdown-menu" id="paisadropdown">
+                                    <a class="dropdown-item" href="dashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="report">Report</a>
+                                    <a class="dropdown-item" href="referearn">Refer & Earn</a>
+                                    <a class="dropdown-item" href="withdraw">Withdraw</a>
+                                </div>
+                            </div>
+                        </li>&nbsp&nbsp
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#advertiserdropdown" data-toggle="dropdown" >Advertiser</a>
+                                <div class="dropdown-menu" id="advertiserdropdown">
+                                    <a class="dropdown-item" href="advdashboard">Dashboard</a>
+                                    <a class="dropdown-item" href="advreport">Report</a>
+                                    <a class="dropdown-item" href="advhistory">History</a>
+                                    <a class="dropdown-item" href="advertise">Advertise</a>
+                                </div>
+                            </div>
+                        </li>&nbsp&nbsp
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#settingsdropdown" data-toggle="dropdown" >Settings</a>
+                                <div class="dropdown-menu" id="settingsdropdown">
+                                    <a class="dropdown-item" href="profile">Profile</a>
+                                    <a class="dropdown-item" href="update">Update</a>
+                                    <a class="dropdown-item" href="contactus">Contact Us</a>
+                                    <a class="dropdown-item" href="https://www.google.com/">Logout</a>
+                                </div>
+                            </div>
+                        </li>&nbsp&nbsp
+                    </ul>
+                </div>
+                <input type="search" class="search form-control input-group-postpend input-group" placeholder="Search">
+                <button class="fa fa-search fa-lg bg-primary dark input-group-button" type="button"></button>
+                <!--<div class="input-group ml-auto">
+                    <div class="input-group-postpend">
+                        <input type="search" class="form-control" placeholder="Search">
+                    </div>
+                    <button class="fa fa-search fa-lg bg-primary input-group-button" type="button"></button>
+                </div>-->
+        </nav>
+        <div class="row row-content">
+            <div class="col-12">
+                <h1 style="text-align:center;">Profile</h1>
+                <i class="fa fa-user fa-4x" style="text-align: center;"></i>
+            </div>
+            <div class="col-12">
+                <form action="update" method="POST">
+                    <div class="form-group row">
+                        {% csrf_token %}
+                        <label for="fullname" class="offset-1 col-md-2 col-sm-2 col-form-label">Name</label>
+                        <div class="col-md-3 offset-xs-1col-sm-3">
+                            <input type="text" class="form-control" id="fullname" name="firstname" placeholder="First Name"><br>
+                        </div>
+                        <div class="col-md-4 col-sm-4">
+                            <input type="text" class="form-control" id="fullname" name="lastname" placeholder="Last Name"><br>
+                        </div>
+                        
+                        <label for="email" class="offset-1 col-md-2 col-sm-2 col-form-label">Email</label>
+                        <div class="col-md-7 col-sm-7">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Required" ><br>
+                        </div>
+                        <label for="optemail" class="offset-1 col-md-2 col-sm-2 col-form-label"></label>
+                        <div class="col-md-7 col-sm-7">
+                            <input type="text" class="form-control" id="optemail" name="optemail" placeholder="Optional"><br>
+                        </div><br>
+                        <label for="number" class="offset-1 col-md-2 col-sm-2 col-form-label">Number</label>
+                        <div class="col-md-1 col-sm-1">
+                            <input type="text" class="form-control" id="countrycode" name="countrycode" placeholder="Country code" ><br>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <input type="number" class="form-control" id="number" name="firstnumber" placeholder="First number(Required)" ><br>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <input type="number" class="form-control" id="number" name="secondnumber" placeholder="Second number(Optional)"><br>
+                        </div>
+                        
+                        <label for="password" class="offset-1 col-md-2 col-sm-2 col-form-label">Password</label>
+                        <div class="col-md-4 col-sm-4">
+                            <input type="password" class="form-control" id="password" name="enterpassword" placeholder="Enter password"><br>
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <input type="password" class="form-control" id="password" name="reenterpassword" placeholder="Re-enter password"><br>
+                        </div>
+                        <label for="address" class="offset-1 col-md-2 col-sm-2 col-form-label">Address</label>
+                        <div class="col-md-7 col-sm-7">
+                            <textarea class="form-control" id="address" name="address"></textarea><br>
+                        </div>
+
+                        <label for="country" class="offset-1 col-md-2 col-sm-2 col-form-label">Country</label>
+                        <div class="col-md-3 col-sm-3">
+                            <select class="form-control" id="country" name="country" placeholder="Select your Country">
+                                <option>Select your country</option>
+                                <option>India</option>
+                                <option>Canada</option>
+                                <option>Italy...</option>
+                            </select>
+                        </div>
+                        <label for="country" class="col-md-1 col-sm-1 col-form-label">Language</label>
+                        <div class="col-md-3 col-sm-3">
+                            <select class="form-control" id="country" name="language">
+                                <option>Select your Language</option>
+                                <option>Telugu</option>
+                                <option>Hindi</option>
+                                <option>English</option>
+                                <option>Other</option>
+                            </select>
+                            <br>
+                        </div>
+                        
+                        <label for="type" class="offset-1 col-md-2 col-sm-2 col-form-label">type</label>
+                        <div class="col-md-7 col-sm-7">
+                            <select type="password" class="form-control" id="type" name="type" >
+                                <option>Select your type</option>
+                                <option>Advertiser</option>
+                                <option>Viewer</option>
+                                <option>Both</option>
+                            </select><br>
+                        </div>
+
+                        <label for="interested-in" class="offset-1 col-md-2 col-sm-2 col-form-label">Interested in</label>
+                        <div class="form-check col-md-7 col-sm-7" name="interest">
+                            <input type="checkbox" id="check1" name="interest">
+                            <label for="check1">Games</label>
+                            <input type="checkbox" id="check1" name="technologies">
+                            <label for="check1">Technology</label>
+                            <input type="checkbox" id="check1" name="socialmedia">
+                            <label for="check1">Social</label>
+                            <input type="checkbox" id="check1" name="product">
+                            <label for="check1">Products</label>
+                        </div>
+                        <div class="col-12 col-sm-12  offset-1">
+                            <input type="checkbox" id="checkfinal" class="offset-1">
+                            <label for="checkfinal">Agreeing term and condition of sk policies</label>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                        
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        
+        <form>
+            <div class="form-group row">
+                <label class="offset-1 col-form-label col-md-2 col-sm-2">Website</label>
+                <div class="col-12 col-sm-6 col-md-6 ">
+                    <input type="text" placeholder="Paste your website url"  class="form-control">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-12 col-md-2 col-sm-2">
+                    <input type="button" class="btn btn-primary" value="Save"> <br><br>
+                </div> 
+
+                <label class="offset-1 col-form-label col-md-2 col-sm-2">Facebook</label>
+                <div class="col-12 col-sm-6 col-md-6 ">
+                    <input type="text" placeholder="Paste your facebook url"  class="form-control">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-12 col-md-2 col-sm-2">
+                    <input type="button" class="btn btn-primary" value="Save"><br><br>
+                </div>
+                
+                <label class="offset-1 col-form-label col-md-2 col-sm-2">Instagram</label>
+                <div class="col-12 col-sm-6 col-md-6 ">
+                    <input type="text" placeholder="Paste your instagram url"  class="form-control">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-12 col-md-2 col-sm-2">
+                    <input type="button" class="btn btn-primary" value="Save"><br><br>
+                </div> 
+                
+                <label class="offset-1 col-form-label col-md-2 col-sm-2">Twitter</label>
+                <div class="col-12 col-sm-6 col-md-6 ">
+                    <input type="text" placeholder="Paste your twitter url"  class="form-control">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-12 col-md-2 col-sm-2">
+                    <input type="button" class="btn btn-primary" value="Save"><br><br>
+                </div> 
+                
+                <label class="offset-1 col-form-label col-md-2 col-sm-2">Pinterest</label>
+                <div class="col-12 col-sm-6 col-md-6 ">
+                    <input type="text" placeholder="Paste your pinterest url"  class="form-control"><br>
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-12 col-md-2 col-sm-2">
+                    <input type="button" class="btn btn-primary" value="Save">
+                </div> 
+                
+                <label class="offset-1 col-form-label col-md-2 col-sm-2">Youtube</label>
+                <div class="col-12 col-sm-6 col-md-6 ">
+                    <input type="text" placeholder="Paste your youtube url"  class="form-control">
+                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-12 col-md-2 col-sm-2">
+                    <input type="button" class="btn btn-primary" value="Save">
+                </div> 
+                
+            </div>
+        </form>
+        
+        <br><br><br><br>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 col-bg-4">
+                            <th><h3>Pages</h3></th>
+                            <dd><a href="termsandcondition">Terms and Conditions</a></dd>
+                            <dd><a href="privacypolicy">Privacy Policy</a></dd>
+                            <dd><a href="aboutus">About Us</a></dd>
+                            <dd><a href="contactus">Contact Us</a></dd>
+                        </div>
+                        <div class="col-12 col-sm-4 col-bg-4">
+                            <th><h3>Developers</h3></th>
+                            
+                            <dd>Sai kiran</dd>
+                        </div>
+                        <div class="col-12 col-sm-3 col-bg-3 offset-1">
+                            <th><h3>Social Media</h3></th>
+                            <dd><a href="https://twitter.com/BloggerBobbili" target="_blank">Twitter</a></dd>
+                            <dd><a href="https://www.facebook.com/bobbili.saikiran.94" target="_blank">Facebook</a></dd>
+                            <dd><a href="https://in.pinterest.com/bobbilisaikiran/" target="_blank">Pinterest</a></dd>
+                            <dd><a href="https://www.youtube.com/channel/UC1sjo5urqghLPvZ0l4c5vnQ/" target="_blank">Youtube</a></dd>
+                            <dd><a href="https://www.instagram.com/blo.ggerblogs/" target="_blank">Instagram</a></dd>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</head>

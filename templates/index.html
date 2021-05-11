@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=sdge">
+        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css\styles.css' %}">
+        <link rel="stylesheet" href="{% static 'node_modules\font-awesome\font-awesome\css/font-awesome.min.css' %}">
+        <title>Home</title>
+    </head>
+    <body>
+        
+        <br><br><br><br>
+            <nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <a href="index" style="text-decoration: none;"><h1 id="navpaisa">Paisa</h1></a>
+                   
+                    <div class="collapse navbar-collapse" id="Navbar">
+                        <ul class="navbar-nav ml-auto">&nbsp&nbsp
+                            <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#paisadropdown" data-toggle="dropdown" >Paisa</a>
+                                    <div class="dropdown-menu" id="paisadropdown">
+                                        <a class="dropdown-item" href="dashboard">Dashboard</a>
+                                        <a class="dropdown-item" href="report">Report</a>
+                                        <a class="dropdown-item" href="referearn">Refer & Earn</a>
+                                        <a class="dropdown-item" href="withdraw">Withdraw</a>
+                                    </div>
+                                </div>
+                            </li>&nbsp&nbsp
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#advertiserdropdown" data-toggle="dropdown" >Advertiser</a>
+                                    <div class="dropdown-menu" id="advertiserdropdown">
+                                        <a class="dropdown-item" href="advdashboard">Dashboard</a>
+                                        <a class="dropdown-item" href="advreport">Report</a>
+                                        <a class="dropdown-item" href="advhistory">History</a>
+                                        <a class="dropdown-item" href="advertise">Advertise</a>
+                                    </div>
+                                </div>
+                            </li>&nbsp&nbsp
+                            <li class="nav-item">
+                                <div class="dropdown">
+                                    <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#settingsdropdown" data-toggle="dropdown" >Settings</a>
+                                    <div class="dropdown-menu" id="settingsdropdown">
+                                        <a class="dropdown-item" href="profile">Profile</a>
+                                        <a class="dropdown-item" href="update">Update</a>
+                                        <a class="dropdown-item" href="contactus">Contact Us</a>
+                                        <a class="dropdown-item" href="https://www.google.com/">Logout</a>
+                                    </div>
+                                </div>
+                            </li>&nbsp&nbsp
+                        </ul>
+                    </div>
+                    <input type="search" class="search form-control input-group-postpend input-group" placeholder="Search">
+                    <button class="fa fa-search fa-lg bg-primary dark input-group-button" type="button"></button>
+                    <!--<div class="input-group ml-auto">
+                        <div class="input-group-postpend">
+                            <input type="search" class="form-control" placeholder="Search">
+                        </div>
+                        <button class="fa fa-search fa-lg bg-primary input-group-button" type="button"></button>
+                    </div>-->
+            </nav>
+            <div class="col-12 col-sm-8 col-bg-8 offset-sm-2">
+                <div class="container">
+                    <div class="row">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item" style=" min-width: 170px;  text-align: center;">
+                                <a class="nav-link active bg-primary"href="#paisa" role="tab" data-toggle="tab">Paisa</a>
+                            </li>
+                            <li class="nav-item" style="min-width: 170px; max-width: 500px; text-align: center;">
+                                <a class="nav-link active" href="#shots" role="tab" data-toggle="tab">Video</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade show active" id="paisa">
+                               
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="shots">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="card col-12 col-sm-12 col"><br>
+                            <!-- For loop -->
+                            {% for dest in dest %}
+                            <div class="col-12 col-sm-12 col-bg-12">
+                                <div class="card">
+                                    <div class="card-header bg-primary">
+                                        <div class="row row-content">
+                                            <div class="col-12 col-sm-9 col-xs-3 col-bg-9">
+                                                <h1 style="color: rgb(255, 255, 255);">{{dest.header}}</h1>
+                                            </div>
+                                            <div class="col-12 col-sm-3 col-bg-3 col-xs-3 justify-content-center">
+                                                <!--if conditions-->
+                                                {% if dest.free %}
+                                                <span class="circlesno"></span>
+                                                {% endif %}
+                                                <!--End id-->
+                                                {% if dest.silver%}
+                                                <span class="circlessilver"></span>
+                                                {% endif %}
+                                                {% if dest.money %}
+                                                <span class="circlespaisa"></span>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a role="button" href="https://{{dest.url}}" target="_blank" style="text-decoration: none;">
+                                        <div class="card-body">
+                                            <h2>{{dest.url}}</h2>
+                                            <p>{{dest.description}}</p>
+                                        </div>
+                                    </a>
+                                    <div class="card-footer">
+                                        <a role="button"><i class="fa fa-heart fa-2x"><br><h5>Favorite</h5></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a role="button"><i class="fa fa-thumbs-up fa-2x"><br><h5>like</h5></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a role="button"><i class="fa fa-share-alt fa-2x"><br><h5>Share</h5></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a role="button" href="https://{{dest.url}}" target="_blank"><i class="fa fa-share fa-2x"><br><h5>Visit</h5></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a role="button"><i class="fa fa-comments fa-2x"><h5>comment</h5></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                            <br><br>
+                            {% endfor %}
+                            <!--End for-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-sm-4 col-bg-4">
+                            <th><h3>Pages</h3></th>
+                            <dd><a href="termsandcondition">Terms and Conditions</a></dd>
+                            <dd><a href="privacypolicy">Privacy Policy</a></dd>
+                            <dd><a href="aboutus">About Us</a></dd>
+                            <dd><a href="contactus">Contact Us</a></dd>
+                        </div>
+                        <div class="col-12 col-sm-4 col-bg-4">
+                            <th><h3>Developers</h3></th>
+                            
+                            <dd>Sai kiran</dd>
+                        </div>
+                        <div class="col-12 col-sm-3 col-bg-3 offset-1">
+                            <th><h3>Social Media</h3></th>
+                            <dd><a href="https://twitter.com/BloggerBobbili" target="_blank">Twitter</a></dd>
+                            <dd><a href="https://www.facebook.com/bobbili.saikiran.94" target="_blank">Facebook</a></dd>
+                            <dd><a href="https://in.pinterest.com/bobbilisaikiran/" target="_blank">Pinterest</a></dd>
+                            <dd><a href="https://www.youtube.com/channel/UC1sjo5urqghLPvZ0l4c5vnQ/" target="_blank">Youtube</a></dd>
+                            <dd><a href="https://www.instagram.com/blo.ggerblogs/" target="_blank">Instagram</a></dd>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</head>
