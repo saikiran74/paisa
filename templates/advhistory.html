@@ -80,18 +80,18 @@
                 <tbody>
                     {% for hist in hist %}
                     <tr>
-                        
-                        <td>{{hist.header}}</td>
-                        <td>{{hist.url}}</td>
-                        <td>{{hist.description}}</td>
-                        <td>{{hist.type}}</td>
-                        <td>{{hist.silver}}</td>
-                        <td>{{hist.silverclcik}}</td>
-                        <td>{{hist.silverimpression}}</td>
-                        <td>{{hist.money}}</td>
-                        <td>{{hist.moneyclick}}</td>
-                        <td>{{hist.moneyimpression}}
-                        
+                        {% if hist.username == user.username %}
+                            <td>{{hist.header}}</td>
+                            <td>{{hist.url}}</td>
+                            <td>{{hist.description}}</td>
+                            <td>{{hist.type}}</td>
+                            <td>{{hist.silver}}</td>
+                            <td>{{hist.silverclcik}}</td>
+                            <td>{{hist.silverimpression}}</td>
+                            <td>{{hist.money}}</td>
+                            <td>{{hist.moneyclick}}</td>
+                            <td>{{hist.moneyimpression}}
+                        {% endif %}
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -110,7 +110,11 @@
                 </div>
                 <div class="col-12 col-sm-4 col-bg-4">
                     <th><h3>Developers</h3></th>
-                    
+                    <dd>Sai Kishore</dd>
+                    <dd>Tarak</dd>
+                    <dd>Sudeep</dd>
+                    <dd>Akash</dd>
+                    <dd>Gupta</dd>
                     <dd>Sai kiran</dd>
                 </div>
                 <div class="col-12 col-sm-3 col-bg-3 offset-1">

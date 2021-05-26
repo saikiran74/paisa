@@ -21,7 +21,9 @@
                    
                     <div class="collapse navbar-collapse" id="Navbar">
                         <ul class="navbar-nav ml-auto">&nbsp&nbsp
-                            <li class="nav-item active"><a class="nav-link" href="index">Home</a></li>
+                            {% if user.is_authenticated %}
+                                <li class="nav-item active"><a class="nav-link" href="index">Welcome, {{user}}</a></li>
+                            {%endif%}
                             <li class="nav-item">
                                 <div class="dropdown">
                                     <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#paisadropdown" data-toggle="dropdown" >Paisa</a>
@@ -49,9 +51,14 @@
                                     <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#settingsdropdown" data-toggle="dropdown" >Settings</a>
                                     <div class="dropdown-menu" id="settingsdropdown">
                                         <a class="dropdown-item" href="profile">Profile</a>
-                                        <a class="dropdown-item" href="update">Update</a>
+                                        <a class="dropdown-item" href="{% url 'update' user.username %}">Update</a>
                                         <a class="dropdown-item" href="contactus">Contact Us</a>
-                                        <a class="dropdown-item" href="https://www.google.com/">Logout</a>
+                                        {% if user.is_authenticated %}
+                                            <a class="dropdown-item" href="logout">Logout</a>
+                                        {% else %}
+                                            <a class="dropdown-item" href="login">Sign-in</a>
+                                            <a class="dropdown-item" href="createaccount">Register</a>
+                                        {%endif%}
                                     </div>
                                 </div>
                             </li>&nbsp&nbsp
@@ -99,21 +106,21 @@
                                             </div>
                                             <div class="col-12 col-sm-3 col-bg-3 col-xs-3 justify-content-center">
                                                 <!--if conditions-->
-                                                {% if dest.free %}
+                                                {% if dest.money %}
                                                 <span class="circlesno"></span>
                                                 {% endif %}
                                                 <!--End id-->
                                                 {% if dest.silver%}
                                                 <span class="circlessilver"></span>
                                                 {% endif %}
-                                                {% if dest.money %}
+                                                {% if dest.free %}
                                                 <span class="circlespaisa"></span>
                                                 {% endif %}
 
                                             </div>
                                         </div>
                                     </div>
-                                    <a role="button" href="https://{{dest.url}}" target="_blank" style="text-decoration: none;">
+                                    <a role="button" href="http://{{dest.url}}" target="_blank" style="text-decoration: none;">
                                         <div class="card-body">
                                             <h2>{{dest.url}}</h2>
                                             <p>{{dest.description}}</p>
@@ -149,7 +156,11 @@
                         </div>
                         <div class="col-12 col-sm-4 col-bg-4">
                             <th><h3>Developers</h3></th>
-                            
+                            <dd>Sai Kishore</dd>
+                            <dd>Tarak</dd>
+                            <dd>Sudeep</dd>
+                            <dd>Akash</dd>
+                            <dd>Gupta</dd>
                             <dd>Sai kiran</dd>
                         </div>
                         <div class="col-12 col-sm-3 col-bg-3 offset-1">

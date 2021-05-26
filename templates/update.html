@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <head>
     <head>
@@ -59,172 +60,112 @@
                 </div>
                 <input type="search" class="search form-control input-group-postpend input-group" placeholder="Search">
                 <button class="fa fa-search fa-lg bg-primary dark input-group-button" type="button"></button>
-                <!--<div class="input-group ml-auto">
-                    <div class="input-group-postpend">
-                        <input type="search" class="form-control" placeholder="Search">
-                    </div>
-                    <button class="fa fa-search fa-lg bg-primary input-group-button" type="button"></button>
-                </div>-->
+                
         </nav>
-        <div class="row row-content">
-            <div class="col-12">
-                <h1 style="text-align:center;">Profile</h1>
-                <i class="fa fa-user fa-4x" style="text-align: center;"></i>
-            </div>
-            <div class="col-12">
-                <form action="update" method="POST">
-                    <div class="form-group row">
-                        {% csrf_token %}
-                        <label for="fullname" class="offset-1 col-md-2 col-sm-2 col-form-label">Name</label>
-                        <div class="col-md-3 offset-xs-1col-sm-3">
-                            <input type="text" class="form-control" id="fullname" name="firstname" placeholder="First Name"><br>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <input type="text" class="form-control" id="fullname" name="lastname" placeholder="Last Name"><br>
-                        </div>
-                        
-                        <label for="email" class="offset-1 col-md-2 col-sm-2 col-form-label">Email</label>
-                        <div class="col-md-7 col-sm-7">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Required" ><br>
-                        </div>
-                        <label for="optemail" class="offset-1 col-md-2 col-sm-2 col-form-label"></label>
-                        <div class="col-md-7 col-sm-7">
-                            <input type="text" class="form-control" id="optemail" name="optemail" placeholder="Optional"><br>
-                        </div><br>
-                        <label for="number" class="offset-1 col-md-2 col-sm-2 col-form-label">Number</label>
-                        <div class="col-md-1 col-sm-1">
-                            <input type="text" class="form-control" id="countrycode" name="countrycode" placeholder="Country code" ><br>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                            <input type="number" class="form-control" id="number" name="firstnumber" placeholder="First number(Required)" ><br>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                            <input type="number" class="form-control" id="number" name="secondnumber" placeholder="Second number(Optional)"><br>
-                        </div>
-                        
-                        <label for="password" class="offset-1 col-md-2 col-sm-2 col-form-label">Password</label>
-                        <div class="col-md-4 col-sm-4">
-                            <input type="password" class="form-control" id="password" name="enterpassword" placeholder="Enter password"><br>
-                        </div>
-                        <div class="col-md-3 col-sm-3">
-                            <input type="password" class="form-control" id="password" name="reenterpassword" placeholder="Re-enter password"><br>
-                        </div>
-                        <label for="address" class="offset-1 col-md-2 col-sm-2 col-form-label">Address</label>
-                        <div class="col-md-7 col-sm-7">
-                            <textarea class="form-control" id="address" name="address"></textarea><br>
-                        </div>
 
-                        <label for="country" class="offset-1 col-md-2 col-sm-2 col-form-label">Country</label>
-                        <div class="col-md-3 col-sm-3">
-                            <select class="form-control" id="country" name="country" placeholder="Select your Country">
-                                <option>Select your country</option>
-                                <option>India</option>
-                                <option>Canada</option>
-                                <option>Italy...</option>
-                            </select>
+        <!--<div class="container">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form|crispy}}
+                <input type="submit" name="submit" class="btn btn-primary">
+            </form>
+        </div>-->
+        <div class="container">
+            <div class="row row-content">
+                <div class="col-12">
+                    <h1 style="text-align:center;">Profile</h1>
+                    <i class="fa fa-user fa-4x" style="text-align: center;"></i>
+                </div>
+                <div class="col-10 offset-sm-1">
+                    <form action="" method="POST">
+                        <div class="row">
+                            {% csrf_token %}
+                            <!--<label for="email" class="offset-1 col-md-2 col-sm-2 col-form-label">Brand Name</label>-->
+                            <div class="col-12">
+                                {{form.brandname|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{form.first_name|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{form.last_name|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{form.email|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{form.email2|as_crispy_field}}
+                            </div><br>
+                            <div class="col-sm-6">
+                                {{form.number|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-6">
+                                {{form.number2|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-4">
+                                {{form.country|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-4">
+                                {{form.language|as_crispy_field}}
+                            </div>
+                            <div class="col-sm-4">
+                                {{form.type|as_crispy_field}}
+                            </div>
+                            <div class="col-12">
+                                {{form.address|as_crispy_field}}
+                            </div>
+                            
+                            
+    
+                            <!--<label for="interested-in" class="offset-1 col-md-2 col-sm-2 col-form-label">Interested in</label>
+                            <div class="form-check col-md-7 col-sm-7" name="interest">
+                                <input type="checkbox" id="check1" name="interest">
+                                <label for="check1">Games</label>
+                                <input type="checkbox" id="check1" name="technologies">
+                                <label for="check1">Technology</label>
+                                <input type="checkbox" id="check1" name="socialmedia">
+                                <label for="check1">Social</label>
+                                <input type="checkbox" id="check1" name="product">
+                                <label for="check1">Products</label>
+                            </div>-->
+                            
+                            <div class="col-12 col-sm-6 col-md-6 ">
+                                {{form.website|as_crispy_field}}
+                            </div>
+                            
+    
+                            <div class="col-12 col-sm-6 col-md-6 ">
+                                {{form.youtube|as_crispy_field}}
+                            </div>
+                            
+                            
+                            <div class="col-12 col-sm-6 col-md-6 ">
+                                {{form.facebook|as_crispy_field}}
+                            </div>
+                            
+                            
+                            <div class="col-12 col-sm-6 col-md-6 ">
+                                {{form.instagram|as_crispy_field}}
+                             </div>
+                            
+                            <div class="col-12 col-sm-6 col-md-6 ">
+                                {{form.twitter|as_crispy_field}}
+                            </div>
+                            
+                            <div class="col-12 col-sm-6 col-md-6 ">
+                                {{form.pinterest|as_crispy_field}}
+                            </div>
+                            <div class="col-12" style="text-align: center;">
+                                <input type="submit" name="submit" class="btn btn-primary">
+                            </div>
                         </div>
-                        <label for="country" class="col-md-1 col-sm-1 col-form-label">Language</label>
-                        <div class="col-md-3 col-sm-3">
-                            <select class="form-control" id="country" name="language">
-                                <option>Select your Language</option>
-                                <option>Telugu</option>
-                                <option>Hindi</option>
-                                <option>English</option>
-                                <option>Other</option>
-                            </select>
-                            <br>
-                        </div>
-                        
-                        <label for="type" class="offset-1 col-md-2 col-sm-2 col-form-label">type</label>
-                        <div class="col-md-7 col-sm-7">
-                            <select type="password" class="form-control" id="type" name="type" >
-                                <option>Select your type</option>
-                                <option>Advertiser</option>
-                                <option>Viewer</option>
-                                <option>Both</option>
-                            </select><br>
-                        </div>
-
-                        <label for="interested-in" class="offset-1 col-md-2 col-sm-2 col-form-label">Interested in</label>
-                        <div class="form-check col-md-7 col-sm-7" name="interest">
-                            <input type="checkbox" id="check1" name="interest">
-                            <label for="check1">Games</label>
-                            <input type="checkbox" id="check1" name="technologies">
-                            <label for="check1">Technology</label>
-                            <input type="checkbox" id="check1" name="socialmedia">
-                            <label for="check1">Social</label>
-                            <input type="checkbox" id="check1" name="product">
-                            <label for="check1">Products</label>
-                        </div>
-                        <div class="col-12 col-sm-12  offset-1">
-                            <input type="checkbox" id="checkfinal" class="offset-1">
-                            <label for="checkfinal">Agreeing term and condition of sk policies</label>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-primary">Save</button>
-                        </div>
-                        
-                    </div>
-                </form>
-
+                    </form>
+    
+                </div>
             </div>
         </div>
+<br><br><br><br>
         
-        <form>
-            <div class="form-group row">
-                <label class="offset-1 col-form-label col-md-2 col-sm-2">Website</label>
-                <div class="col-12 col-sm-6 col-md-6 ">
-                    <input type="text" placeholder="Paste your website url"  class="form-control">
-                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="col-12 col-md-2 col-sm-2">
-                    <input type="button" class="btn btn-primary" value="Save"> <br><br>
-                </div> 
-
-                <label class="offset-1 col-form-label col-md-2 col-sm-2">Facebook</label>
-                <div class="col-12 col-sm-6 col-md-6 ">
-                    <input type="text" placeholder="Paste your facebook url"  class="form-control">
-                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="col-12 col-md-2 col-sm-2">
-                    <input type="button" class="btn btn-primary" value="Save"><br><br>
-                </div>
-                
-                <label class="offset-1 col-form-label col-md-2 col-sm-2">Instagram</label>
-                <div class="col-12 col-sm-6 col-md-6 ">
-                    <input type="text" placeholder="Paste your instagram url"  class="form-control">
-                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="col-12 col-md-2 col-sm-2">
-                    <input type="button" class="btn btn-primary" value="Save"><br><br>
-                </div> 
-                
-                <label class="offset-1 col-form-label col-md-2 col-sm-2">Twitter</label>
-                <div class="col-12 col-sm-6 col-md-6 ">
-                    <input type="text" placeholder="Paste your twitter url"  class="form-control">
-                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="col-12 col-md-2 col-sm-2">
-                    <input type="button" class="btn btn-primary" value="Save"><br><br>
-                </div> 
-                
-                <label class="offset-1 col-form-label col-md-2 col-sm-2">Pinterest</label>
-                <div class="col-12 col-sm-6 col-md-6 ">
-                    <input type="text" placeholder="Paste your pinterest url"  class="form-control"><br>
-                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="col-12 col-md-2 col-sm-2">
-                    <input type="button" class="btn btn-primary" value="Save">
-                </div> 
-                
-                <label class="offset-1 col-form-label col-md-2 col-sm-2">Youtube</label>
-                <div class="col-12 col-sm-6 col-md-6 ">
-                    <input type="text" placeholder="Paste your youtube url"  class="form-control">
-                </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <div class="col-12 col-md-2 col-sm-2">
-                    <input type="button" class="btn btn-primary" value="Save">
-                </div> 
-                
-            </div>
-        </form>
-        
-        <br><br><br><br>
-
             <footer class="footer">
                 <div class="container">
                     <div class="row">
@@ -237,7 +178,11 @@
                         </div>
                         <div class="col-12 col-sm-4 col-bg-4">
                             <th><h3>Developers</h3></th>
-                            
+                            <dd>Sai Kishore</dd>
+                            <dd>Tarak</dd>
+                            <dd>Sudeep</dd>
+                            <dd>Akash</dd>
+                            <dd>Gupta</dd>
                             <dd>Sai kiran</dd>
                         </div>
                         <div class="col-12 col-sm-3 col-bg-3 offset-1">

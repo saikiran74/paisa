@@ -9,23 +9,6 @@
         <link rel="stylesheet" href="{% static 'css\styles.css' %}">
         <link rel="stylesheet" href="{% static 'node_modules\font-awesome\font-awesome\css/font-awesome.min.css' %}">
         <title>Advertiser Dashboard</title>
-        <script>
-            function calc(){
-                    var a,b,c;
-                    a=Number(document.getElementById("money").value);
-                    b=Number(document.getElementById("coins").value);
-                    if(a==""){
-                        alert("Enter money");
-                        return false
-                    }
-                    if(b==""){
-                        alert("Enter coins")
-                        return false
-                    }
-                    c= a + b*0.6;
-                    document.getElementById("answer").value= c;
-                }
-        </script>
     </head>
     <body>
         
@@ -105,6 +88,7 @@
                                 </div>   
                                 <div class="col col-5" >
                                     <h3><label title="Money">120</label></h3>
+
                                 </div>
                             </div>
                         </div>
@@ -113,33 +97,18 @@
                         <div class="card">
                             <form action="advdashboard" method="POST">
                                 <div class="container">
-                                    <div class="form-group"><br>
-                                        <div class="row ">
+                                    <div class="form-group row row-content">
+                                        <br><br>
+                                        <div class="col col-8"><br>
+                                            <input type="number" class="form-control" placeholder="Enter amount to add in $" id="amount" name="amount">
+
+                                        </div>
+                                        <div class="col col-8"><br>
+                                            <input type="number" class="form-control" placeholder="Enter number of silver coin to add in $" id="silver" name="silver">
                                             
-                                            <div class="col-3">
-                                                Money:
-                                            </div>
-                                            <div class="col-6">
-                                                <input type="number" class="form-control" name="money" placeholder="Enter money" id="money">
-                                            </div>
-                                            <div class="offset-3">
-                                                <br><br>
-                                            </div>
-                                            <div class="col-3">
-                                                Coins:                        
-                                            </div>
-                                            <div class="col-6">
-                                                <input type="number" name="coins" class="form-control" placeholder="Enter no of coins" id="coins">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="button" value="calculate" onclick="calc()" class="btn btn-primary"><br><br>
-                                            </div>
-                                            <div class="col-6 offset-3">
-                                                <input type="text" id="answer" placeholder="Click calculate before" class="form-control">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="button" name="pay" value="pay" class="btn btn-primary">
-                                            </div>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <input type="submit" class="btn btn-primary" value="Pay">
                                         </div>
                                     </div>
                                 </div>
@@ -171,7 +140,11 @@
                         </div>
                         <div class="col-12 col-sm-4 col-bg-4">
                             <th><h3>Developers</h3></th>
-                            
+                            <dd>Sai Kishore</dd>
+                            <dd>Tarak</dd>
+                            <dd>Sudeep</dd>
+                            <dd>Akash</dd>
+                            <dd>Gupta</dd>
                             <dd>Sai kiran</dd>
                         </div>
                         <div class="col-12 col-sm-3 col-bg-3 offset-1">
