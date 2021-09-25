@@ -39,8 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms'
+    'crispy_forms',
+    'django_social_share',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+CKEDITOR_UPLOAD_PATH='uploads/'
 
 CRISPY_TEMPLATE_PACK='bootstrap4'
 
@@ -81,7 +85,7 @@ WSGI_APPLICATION = 'paisa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'paisa_database',
+        'NAME': 'paisafin',
         'USER':'postgres',
         'PASSWORD':'1234',
         'HOST':'localhost'
