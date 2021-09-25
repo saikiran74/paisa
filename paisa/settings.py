@@ -50,8 +50,7 @@ CRISPY_TEMPLATE_PACK='bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
-    'whitenoise.middleware.whiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,7 +79,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'paisa.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
