@@ -1,0 +1,1 @@
+web: gunicorn paisa.wsgi --log-file -
