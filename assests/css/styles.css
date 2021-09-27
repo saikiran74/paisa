@@ -1,0 +1,50 @@
+.footer{
+    background-color: rgb(38, 16, 48);
+    color: rgb(255, 255, 255);
+}
+.jumbotron{
+    height: 80px;
+    margin: 0px auto;
+    padding: 15px 30px;
+}
+#search{
+    margin-right: 0px;
+    padding-right: 0px;
+}
+.fa-search{
+    size: 8x;
+    height: 43px;
+}
+#navpaisa{
+    margin-right: 0%;
+    
+}
+.search{
+    height: 43px;
+    width: 150px;
+}
+.circlesno{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(160, 206, 224);
+    border-radius: 50%;
+    display: inline-block;
+}
+.circlessilver{
+    height: 20px;
+    width: 20px;
+    background-color: rgba(241, 103, 10, 0.459);
+    border-radius: 50%;
+    display: inline-block;
+}
+.circlespaisa{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(8, 240, 39);
+    border-radius: 50%;
+    display: inline-block;
+}
+.fa-plus{
+    text-align: center;
+    justify-content: center;
+}
