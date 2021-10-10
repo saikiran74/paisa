@@ -32,10 +32,10 @@
                         </div>
                     </div>-->
                     <div class="row">
-                        <div class="col-12 col-sm-12 col"><br>
+                        <div><br>
                             <!-- For loop -->
                             {% for dest in dest %}
-                            <div class="col-12 col-sm-12 col-bg-12">
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-header bg-primary">
                                         <div class="row row-content">
@@ -58,11 +58,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a role="button" href="http://{{dest.url}}" target="_blank" style="text-decoration: none;">
-                                        <div class="card-body">
-                                            <h3>{{dest.description|safe}}</h3>
-                                        </div>
-                                    </a>
+                                    <div class="card-body">
+                                        <a role="button" href="{{dest.url}}" target="_blank" style="text-decoration: none;">
+                                            <div class="card-body">
+                                                <h3>{{dest.description|safe}}</h3>
+                                            </div>
+                                        </a>
+                                    </div>
                                     <div class="card-footer">
                                         <table >
                                             <tbody >
