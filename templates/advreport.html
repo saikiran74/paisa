@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 {% block content %}
     <!--Write code here itself-->
-        <div style="margin: 50px;">
+        <div class="scroll" style="margin: 50px;">
             <table class="table  table-bordered table-striped">
                 <thead>
                     <tr>
@@ -30,5 +30,15 @@
             </table>
         </div>
         <br><br><br><br>
-    
+        <style>
+            
+            div.scroll {
+                margin: 4px, 4px;
+                padding: 4px;
+                width: 85%;
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: nowrap;
+            }
+        </style>
 {% endblock %}
