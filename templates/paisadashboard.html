@@ -50,27 +50,28 @@
                         </div>
                     </div><br>
                 </div>
-            </div>
-            <br>
-            <div class="container offset-sm-3">
-                <div class="row">
-                    <div class="card col-sm-6 col-bg-6 ">
-                        <form action="{% url 'withdrawmoney' user.username %}" method="POST">
-                            <div class="container">
-                                <div class="form-group row row-content">
-                                    {% csrf_token %}
-                                    <br><br>
-                                    <div class="col col-8"><br>
-                                        <input type="number" class="form-control" placeholder="Enter amount to withdraw" id="amount" name="totalamount" required>
-                                    </div><br>
-                                    <div class="col col-4"><br>
-                                        <input type="submit" class="btn btn-primary" value="Withdraw">
+                <br>
+                <div class="container ">
+                    <div class="row offset-sm-3">
+                        <div class="card">
+                            <form action="{% url 'withdrawmoney' user.username %}" method="POST">
+                                <div class="container">
+                                    <div class="form-group row row-content">
+                                        {% csrf_token %}
+                                        <br><br>
+                                        <div class="col col-8"><br>
+                                            <input type="number" class="form-control" placeholder="Enter amount to withdraw" id="amount" name="totalamount" required>
+                                        </div>
+                                        <div class="col col-4"><br>
+                                            <input type="submit" class="btn btn-primary" value="Withdraw">
+                                        </div>
                                     </div>
-                                </div>
-                            </div>    
-                        </form>
-                    </div><br><br><br>
+                                </div>    
+                            </form>
+                        </div><br><br><br>
+                    </div>
                 </div>
+                
             </div>
 
 

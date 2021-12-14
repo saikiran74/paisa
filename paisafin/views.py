@@ -6,7 +6,11 @@ from .forms import AllForm, DestinationForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
+from django.views.decorators.csrf import csrf_exempt
+import smtplib
+from paytm import Checksum
+from django.http import HttpResponse
+MERCHANT_KEY='FM_GhDnYDHbPNlK2'
 '''
 def followers(request):
     follow=get_object_or_404(All,username=request.POST.get('post_id'))
@@ -30,26 +34,6 @@ def comment(request):
         comment.comments.add(request.user)'''
         return redirect('index')
     return render(request,'index.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -91,17 +75,7 @@ def sell(request,pk):
     else:
         return render(request,'paisadashboard.html')
     
-def withdrawmoney(request,pk):
-    if request.method=='POST':
-        all=All.objects.get(username=pk)
-        if all.mymoney >= int(request.POST['totalamount']):
-            all.mymoney= all.mymoney - int(request.POST['totalamount'])
-            all.save()
-            return redirect(index)
-        else:
-            return redirect(dashboard)
-    else:
-        return render(request,'paisadashboard.html')
+
 
 
 
@@ -208,6 +182,11 @@ def createaccount(request):
                 postto.first_name= request.POST['first_name']
                 postto.last_name= request.POST['last_name']
                 postto.save()
+                server=smtplib.SMTP('smtp.gmail.com',587)
+                server.starttls()
+                server.login('bobbiliblogger@gmail.com','bobbili@123')
+                server.sendmail('bobbiliblogger@gmail.com',postto.email,f'This is to inform you that, just now you have create account in PAISA.\n email: \"{postto.email}\" \n username: \"{postto.username}\"')
+                server.quit()
                 return render(request,'sign-in.html')
                 print('user created')
         else:
@@ -334,8 +313,21 @@ def contactus(request):
         return redirect('index')
     else:
         return render(request,'contactus.html')
-
-    '''form=ContactusForm()
+'''
+def contactusfromlandingpage(request):
+    if request.method=='POST':
+        con=Contactus()
+        con.user="paisa"
+        con.user_id="0"
+        con.name=request.POST['contactusname']
+        con.email=request.POST['contactusemail']
+        con.issue=request.POST['contactusissue']
+        con.save()
+        return redirect('landingpage')
+    else:
+        return render(request,'contactus.html')
+'''
+'''form=ContactusForm()
     if request.method=='POST':
         contact=Contactus.objects.get(pk=id)
         form=ContactusForm(request.POST or None,instance=contact)
@@ -377,6 +369,52 @@ def update(request,pk):
     context={'form':form}
     return render(request,'update.html',context)
 
+@login_required
+def withdrawmoney(request,pk):
+    if request.method=='POST':
+        all=All.objects.get(username=pk)
+        if all.mymoney >= int(request.POST['totalamount']):
+            amount=int(request.POST['totalamount'])
+            param_dict={
+                    'MID': "xKQfaj52092759004308",
+                    'ORDER_ID': "7",
+                    'TXN_AMOUNT': str(request.POST['totalamount']),
+                    'CUST_ID': all.username,
+                    'INDUSTRY_TYPE_ID': 'Retail',
+                    'WEBSITE': 'WEBSTAGING',
+                    'CHANNEL_ID': 'WEB',
+                    'CALLBACK_URL':'http://127.0.0.1:8000/handlerequest',
+
+            }
+            
+            param_dict['CHECKSUMHASH']=Checksum.generate_checksum(param_dict,MERCHANT_KEY)
+            return  render(request, 'paytm.html', {'param_dict': param_dict})
+
+            all.mymoney= all.mymoney - int(request.POST['totalamount'])
+            all.save()
+            
+            return redirect(dashboard)
+        else:
+            return redirect(dashboard)
+    else:
+        return render(request,'paisadashboard.html')
+@csrf_exempt
+def handlerequest(request):
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+
+    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print('order successful')
+        else:
+            print('order was not successful because' + response_dict['RESPMSG'])
+    return render(request, 'paymentstatusdone.html', {'response': response_dict})
+
 
 
 
@@ -401,5 +439,6 @@ def advreport(request):
 def profile(request):
     all=All.objects.all()
     return render(request,'profile.html',{'all':all})
+
 
 

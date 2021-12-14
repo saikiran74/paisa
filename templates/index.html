@@ -75,12 +75,12 @@
                                                             <h3>
                                                                 <button class="like-btn{{dest.id}}" id="likebotton" type="submit"  name="post_id" value="{{dest.id}}" style="border:none;">
                                                                     {% if user not in dest.likes.all %}
-                                                                    <!--<i style="border: none; background: none; color: rgb(0, 0, 0);" class="fa fa-thumbs-up fa-2x" id="Favorite" ></i>-->
+                                                                    <!--<i style="border: none; background: none; color: rgb(0, 0, 0);" class="fa fa-thumbs-up fa-lg" id="Favorite" ></i>-->
                                                                     like
                                                                     {% else %}
                                                                         {% for like in dest.likes.all %}
                                                                             {% if user.id == like.id %}
-                                                                                <!--<i style="border: none; background: none; color: rgb(25, 0, 255);" class="fa fa-thumbs-up fa-2x" id="Favorite" ></i>-->
+                                                                                <!--<i style="border: none; background: none; color: rgb(25, 0, 255);" class="fa fa-thumbs-up fa-lg" id="Favorite" ></i>-->
                                                                                 Unlike
                                                                                 {{break}}
                                                                             {% endif %}
@@ -98,13 +98,13 @@
                                                                 {% if all.username == dest.username%}
                                                                     {% if user not in all.followers.all %}
                                                                         <button type="submit"  name="post_id" value="{{dest.username}}" style="border: none; background: none; color: rgb(0, 0, 0);">
-                                                                            <a role="button" ><i class="fa fa-heart fa-2x"></i>
+                                                                            <a role="button" ><i class="fa fa-heart fa-lg"></i>
                                                                         </button>   
                                                                     {% else %}
                                                                         {% for follower in all.followers.all %}
                                                                             {%   if user.id == follower.id %}
                                                                                 <button type="submit"  name="post_id" value="{{dest.username}}" style="border: none; background: none; color: rgb(5, 46, 230);">
-                                                                                    <a role="button"><i class="fa fa-heart fa-2x"></i></a>
+                                                                                    <a role="button"><i class="fa fa-heart fa-lg"></i></a>
                                                                                 </button>
                                                                             {% endif %}
                                                                         {% endfor %}
@@ -113,20 +113,20 @@
                                                             {% endfor %}
                                                         </form>
                                                     </td>
-                                                    <td ><a role="button" data-toggle="modal" data-target="#share" class="btn btn-primary" style="border: none; background: none; color: rgb(17, 0, 255);"><i class="fa fa-share-alt fa-2x"></i></td>
+                                                    <td ><a role="button" data-toggle="modal" data-target="#share" class="btn btn-primary" style="border: none; background: none; color: rgb(17, 0, 255);"><i class="fa fa-share-alt fa-lg" ></i></td>
                                                     <td >
                                                         <form action="{% url 'visit' dest.id  %}" method="POST">
                                                             {% csrf_token %}
                                                             
                                                             {% if user not in dest.clicks.all %}
                                                                 <button  type="submit" name="post_url" value="{{dest.url}}" class="btn btn-primary" target="_blank" style="border: none; background: none; color: rgb(0, 0, 0);">
-                                                                    <i class="fa fa-share fa-2x"></i>
+                                                                    <i class="fa fa-share fa-lg"></i>
                                                                 </button>
                                                             {% else %}
                                                                 {% for click in dest.clicks.all %}
                                                                     {% if user.id == click.id %}
                                                                         <button  type="submit" name="post_url" value="{{dest.url}}" class="btn btn-primary" target="_blank" style="border: none; background: none; color: rgb(25, 0, 255);">
-                                                                            <i class="fa fa-share fa-2x"></i>
+                                                                            <i class="fa fa-share fa-lg"></i>
                                                                         </button>
                                                                         {{break}}
                                                                     {% endif %}
@@ -135,7 +135,7 @@
                                                         </form>
                                                     </td>
                                                     
-                                                    <td ><a role="button" data-toggle="collapse" data-target="#comment{{dest.id}}" data-id="{{dest.id}}" class="commentbox" name="post_id" id="{{dest.id}}"><i class="fa fa-comments fa-2x"></i></a></td>
+                                                    <td ><a role="button" data-toggle="collapse" data-target="#comment{{dest.id}}" data-id="{{dest.id}}" class="commentbox" name="post_id" id="{{dest.id}}"><i class="fa fa-comments fa-lg"></i></a></td>
                                                     <!--Comments-->
 <!--<div class="modal fade" id="comment" role="dialog" aria-labelledby="shareModel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md" >
@@ -177,31 +177,31 @@
                                                 <tr>
                                                     <td>
                                                         {% if dest.likes.all.count == 1 %}
-                                                        <h5  class="like-count{{dest.id}}">{{dest.likes.all.count}} like</h5>
+                                                        <h6  class="like-count{{dest.id}}">{{dest.likes.all.count}} like</h6>
                                                         {% elif dest.likes.all.count > 1 %}
-                                                            <h5  class="like-count{{dest.id}}">{{dest.likes.all.count}} likes</h5>
+                                                            <h6  class="like-count{{dest.id}}">{{dest.likes.all.count}} likes</h6>
                                                         {% else %}
-                                                            <h5  class="like-count{{dest.id}}">0 likes</h5>
+                                                            <h6  class="like-count{{dest.id}}">0 likes</h6>
                                                         {% endif %}
                                                     </td>
                                                     <td>
                                                         {% for all in all %}
                                                             {% if all.username == dest.username%}
                                                                 {% if user not in all.followers.all %}
-                                                                    <h5>follow</h5>  
+                                                                    <h6>follow</h6>  
                                                                 {% else %}
                                                                     {% for follower in all.followers.all %}
                                                                         {% if user.id == follower.id %}
-                                                                            <h5>Unfollow</h5>
+                                                                            <h6>Unfollow</h6>
                                                                         {% endif %}
                                                                     {% endfor %}
                                                                 {% endif %}
                                                             {% endif %}
                                                         {% endfor %}
                                                     </td>
-                                                    <td><h5>Share</h5></td>
-                                                    <td><h5>Visit</h5></td>
-                                                    <td><h5>comment</h5></td>
+                                                    <td><h6>Share</h6></td>
+                                                    <td><h6>Visit</h6></td>
+                                                    <td><h6>comment</h6></td>
                                                 </tr>
                                                 <!--<tr>
                                                     <td colspan="5">
@@ -329,6 +329,11 @@
             var postid = $(this).data('id');
             $(".modal-body #destid").val( postid );
         });
-        
+
     </script>
+    <style>
+        td{
+            padding-top: 0px;
+        }
+    </style>
 {% endblock %}
